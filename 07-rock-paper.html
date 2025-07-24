@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors Game</h1>
+    <p>Choose your move:</p>
+    <button onclick="
+      playerGame('Rock');
+    ">Rock
+    </button>
+
+    <button onclick="
+      playerGame('Paper');
+    ">Paper
+    </button>
+
+    <button onclick="
+     playerGame('Scissors');
+    ">Scissors
+    </button>
+    
+    <script>
+      function playerGame(playerMove){
+        const computerMove = pickComputerMove(); 
+        let result = ''
+        if (playerMove === 'Scissors'){
+          
+          if (computerMove === 'Rock')
+            result = 'You Lose ^^^';
+          else if (computerMove ==='Paper')
+            result = 'You Win.  Hooray !!!'
+          else if (computerMove === 'Scissors')
+            result = 'Tie.'
+        }
+        else if(playerMove === 'Paper'){
+          
+          if (computerMove === 'Rock')
+            result = 'You Win.  Hooray !!!';
+          else if (computerMove ==='Paper')
+            result = 'Tie.'
+          else if (computerMove === 'Scissors')
+            result = 'You Lose ^^^'
+        }
+        else if(playerMove === 'Rock'){
+         
+          if (computerMove === 'Rock')
+            result = 'You Lose ^^^';
+          else if (computerMove ==='Paper')
+            result = 'You Win.  Hooray !!!'
+          else if (computerMove === 'Scissors')
+            result = 'Tie.'
+        }
+
+        alert(`You picked ${playerMove} , Computer Move is ${computerMove}. ${result}`)
+      }
+
+      function pickComputerMove(){
+        const randomMove = Math.random();
+        let computerMove = ''
+        if(randomMove >= 0 && randomMove < 0.33)
+          computerMove = 'Rock';
+        else if(randomMove >= 0.33 && randomMove < 0.66)
+          computerMove = 'Paper';
+        else if(randomMove >= 0.66 && randomMove < 1)
+          computerMove = 'Scissors';
+
+        return computerMove
+      }
+    </script>
+  </body>
+</html>

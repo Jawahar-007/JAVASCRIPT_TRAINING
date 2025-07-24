@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .add-to-cart-button {
+        background-color: lightgreen;
+        color: darkgreen;
+        border: none;
+        border-radius: 6px;
+      }
+      .buy-now-button {
+        background-color: coral;
+        color: white;
+        border: none;
+        border-radius: 6px;
+      }
+    </style>
+    <title>Buy Page</title>
+  </head>
+  <body>
+    <p>Adults Plain Cotton T-shirts</p>
+    <p>Price: $5.99</p>
+    <p>Available Sizes: S, M, L, XL</p>
+    <p>Available Colors: Red, Blue, Green</p>
+
+    
+    <button class = "add-to-cart-button" onclick = "cartQuantity++; console.log(`Cart Quantity: ${cartQuantity}`);">Add to Cart</button>
+    <button class = "+2-button" onclick = "cartQuantity+= 2; console.log(`Cart Quantity: ${cartQuantity}`);">+2</button>
+    <button onclick = "cartQuantity--; console.log(`Cart Quantity: ${cartQuantity}`);">-1</button>
+    <button onclick = "cartQuantity = 0; console.log(`Cart Quantity: ${cartQuantity}`);">Reset Cart</button>
+    <button onclick = "console.log(`Cart Quantity: ${cartQuantity}`);">Check Cart</button>
+    <button class = "buy-now-button" onclick = "console.log('Loading!!'); alert('Purchased! ');">Buy Now</button>
+
+    <script>
+      let cartQuantity = 0;
+    </script>
+  </body>
+</html>
