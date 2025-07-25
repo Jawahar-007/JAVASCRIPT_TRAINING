@@ -1,19 +1,27 @@
-let num = 5.9;
 
-const os = require('os');
-console.log(Math.floor(num))
-console.log(`Items (${1+1}): $${(num*10+3176)/100}`)
+const fs = require('fs');
+const path = require('path');
 
-/*
-console.log(os.type());
-console.log(os.platform());
-console.log(os.arch());
-console.log(os.version());
-console.log(os.homedir()) 
-console.log(__dirname);
-console.log(__filename);
-console.log("------");
-*/
-const math = require('./math.js');
+const timestamp = Date.now() 
 
-console.log(math.add(5,3));
+fs.readFile(path.join(__dirname,'files','start.txt'), 'utf-8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+  });
+
+fs.writeFile(path.join(__dirname,'files','receive.txt'),'Message received in receive.txt', (err) => {
+  if (err) throw err;
+  console.log('Writing Done!!');
+  fs.appendFile(path.join(__dirname,'files','receive.txt'),`\n Receives text from start.txt on ${timestamp}`, (err) =>{
+  if (err) throw err;
+  console.log('Appending Completed')
+  fs.rename(path.join(__dirname,'files','receive.txt'),path.join(__dirname,'files','end.txt'),(err) =>{
+    if(err) throw err
+    console.log('Renaming Completed');
+  })
+  })
+});
+process.on('uncaughtException', (err) => {
+  console.error(`There was an Uncaught Exception: ${err}`);
+  process.exit(1);
+});
